@@ -1,11 +1,11 @@
+import SignUp from "./components/SignUp";
+
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>OutPost</h1>
-      </header>
+      <SignUp />
     </div>
   );
 }
