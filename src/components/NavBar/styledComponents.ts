@@ -2,7 +2,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 export const NavbarWrapper = styled.nav`
-  ${tw`h-16  shadow-lg bg-purple-700 absolute top-0 w-full`}
+  ${tw`h-16  shadow-lg bg-purple-700 sticky  w-full`}
 `;
 
 export const NavbarContainer = styled.div`

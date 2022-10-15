@@ -2,7 +2,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 export const SignUpContainer = styled.div`
-  ${tw`flex flex-col h-screen justify-center items-center bg-purple-800`}
+  ${tw`flex flex-col h-screen bg-purple-800`}
 `;
 
 export const SignUpHeading = styled.h1`
@@ -10,7 +10,7 @@ export const SignUpHeading = styled.h1`
 `;
 
 export const SignUpForm = styled.form`
-  ${tw`bg-white text-center rounded-lg py-8 px-5 shadow-xl flex items-center flex-col `};
+  ${tw`bg-white text-center rounded-lg py-8 px-5 shadow-xl flex items-center flex-col m-auto`};
   width: 400px;
 `;
 
