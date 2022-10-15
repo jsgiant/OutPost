@@ -35,16 +35,15 @@ const SignIn = () => {
         headers: {'Content-Type': 'application/json'}
       }
     )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error(JSON.stringify(response.body));
-      })
+      .then((response) => response.json())
       .then((data) => {
-        const {token} = data
-        setToken(token)
-        navigate(HOME_PATH)
+        if (data.success) {
+          const {token} = data
+          setToken(token)
+          navigate(HOME_PATH)
+        }else {
+            throw new Error(data.message)
+        }
       })
       .catch((error) => {
         setErrorMsg(error.message)

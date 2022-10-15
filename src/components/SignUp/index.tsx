@@ -47,14 +47,13 @@ const SignUp = () => {
         headers: {'Content-Type': 'application/json'}
       }
     )
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          navigate(SIGN_IN_PATH)
+        }else {
+          throw new Error(data.message)
         }
-        throw new Error(JSON.stringify(response.body));
-      })
-      .then(() => {
-        navigate(SIGN_IN_PATH)
       })
       .catch((error) => {
         setErrorMsg(error.message)
