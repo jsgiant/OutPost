@@ -11,7 +11,7 @@ import {
   SectionHeading,
   SectionDetail,
   DetailsContainer,
-  RequestBtn,
+  ContactBtn,
   TagContainer,
   Tag,
 } from "./styledComponents";
@@ -39,6 +39,7 @@ const Post = ({ postDetails }: Props) => {
     from: fromCity,
     to: toCity,
     type,
+    email,
   } = postDetails;
   return (
     <PostContainer>
@@ -76,7 +77,7 @@ const Post = ({ postDetails }: Props) => {
             </>
           )}
         </TagContainer>
-        <RequestBtn>Request</RequestBtn>
+        <ContactBtn href={`mailto:${email}`}>Contact</ContactBtn>
       </DetailsContainer>
     </PostContainer>
   );
