@@ -4,6 +4,7 @@ import {
   FeedContainer,
   FeedSection,
   FeedWrapper,
+  PostList,
   ProfilePic,
   ProfileSection,
   UserEmail,
@@ -20,9 +21,11 @@ const PostFeed = () => {
           <UserName>Anil Peddireddy</UserName>
           <UserEmail>anil@mail.com</UserEmail>
         </ProfileSection>
-        <FeedSection></FeedSection>
+        <FeedSection>
+          <PostList>{/*TODO: Render the list here */}</PostList>
+        </FeedSection>
       </FeedContainer>
-      <PostCreateModal/>
+      <PostCreateModal />
     </FeedWrapper>
   );
 };

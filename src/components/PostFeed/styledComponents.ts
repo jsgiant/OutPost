@@ -14,7 +14,7 @@ export const ProfileSection = styled.section`
 `;
 
 export const FeedSection = styled.section`
-  ${tw`flex flex-col w-1/3 `}
+  ${tw`flex flex-col flex-1 overflow-auto`}
 `;
 
 export const ProfilePic = styled.img`
@@ -31,4 +31,8 @@ export const UserEmail = styled.p`
 
 export const OfferSection = styled.section`
   ${tw`flex flex-col flex-1`}
+`;
+
+export const PostList = styled.div`
+  ${tw`flex flex-col p-2 w-1/2`}
 `;
