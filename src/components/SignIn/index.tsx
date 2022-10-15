@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { UserContext } from "../../App";
 
 import { HOME_PATH } from "../../constants/pathConstants";
 import { setToken } from "../../utils/storageUtils";
@@ -17,6 +19,8 @@ import {
 
 const SignIn = () => {
   const navigate = useNavigate()
+  //@ts-ignore
+  const [user, dispatch] = useContext(UserContext)
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +42,8 @@ const SignIn = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          const {token} = data
+          const {token, name} = data
+          dispatch({type: 'SET_USER_PROFILE', payload: {email, name}})
           setToken(token)
           navigate(HOME_PATH)
         }else {
@@ -75,7 +80,7 @@ const SignIn = () => {
           minLength={6}
         />
 
-        <SignInBtn type="submit">Sign In</SignInBtn>
+        <SignInBtn type="submit" disabled={isLoading}>Sign In</SignInBtn>
         {errorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
       </SignInForm>
     </SignInContainer>
