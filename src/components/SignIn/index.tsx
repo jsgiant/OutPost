@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "../common/Input";
+import NavBar from "../NavBar";
 import {
   ErrorMsg,
   SignInBtn,
@@ -16,10 +17,12 @@ const SignIn = () => {
   const onSubmitForm = (e: any) => {
     e.preventDefault();
     console.log({ email, password });
+    //TODO: Need to integrate the API
   };
 
   return (
     <SignInContainer>
+      <NavBar isLoggedIn={false} />
       <SignInForm onSubmit={onSubmitForm}>
         <SignInHeading>Sign In</SignInHeading>
 

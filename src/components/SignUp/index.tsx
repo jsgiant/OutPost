@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "../common/Input";
+import NavBar from "../NavBar";
 import {
   ErrorMsg,
   SignUpBtn,
@@ -27,6 +28,7 @@ const SignUp = () => {
 
   return (
     <SignUpContainer>
+      <NavBar isLoggedIn={false} />
       <SignUpForm onSubmit={onSubmitForm}>
         <SignUpHeading>Sign Up</SignUpHeading>
         <Input
