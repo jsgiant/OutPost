@@ -1,4 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
+
+import { HOME_PATH, SIGN_IN_PATH } from "../../constants/pathConstants";
+import { isSignedIn } from "../../utils/authUtils";
+
 import Input from "../common/Input";
 import NavBar from "../NavBar";
 
@@ -11,6 +16,8 @@ import {
 } from "./styledComponents";
 
 const SignUp = () => {
+  const navigate = useNavigate()
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,9 +25,14 @@ const SignUp = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    if (isSignedIn()) {
+      return navigate(HOME_PATH)
+    }
+  }, [])
+
   const onSubmitForm = async (e: any) => {
     e.preventDefault();
-    console.log({ name, email, password, confirmPassword });
     if (password !== confirmPassword) {
       setErrorMsg(`Password doesn't match`);
       return;
@@ -30,12 +42,9 @@ const SignUp = () => {
     await fetch(
       "https://hackout.hafeezulkareem.repl.co/sign-up",
       {
-        //TODO: Need to change the Endpoint
         method: "POST",
         body: JSON.stringify({ name, email, password }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: {'Content-Type': 'application/json'}
       }
     )
       .then((response) => {
@@ -44,7 +53,9 @@ const SignUp = () => {
         }
         throw new Error(JSON.stringify(response.body));
       })
-      .then((data) => {})
+      .then(() => {
+        navigate(SIGN_IN_PATH)
+      })
       .catch((error) => {
         setErrorMsg(error.message)
       }).finally(() => {
