@@ -22,17 +22,20 @@ const SignUp = () => {
     e.preventDefault();
     console.log({ name, email, password, confirmPassword });
     if (password !== confirmPassword) {
-      setErrorMsg(`Password Doesn't match`);
+      setErrorMsg(`Password doesn't match`);
       return;
     }
     setErrorMsg("");
     setIsLoading(true);
-    const promise = await fetch(
+    await fetch(
       "https://hackout.hafeezulkareem.repl.co/sign-up",
       {
         //TODO: Need to change the Endpoint
         method: "POST",
         body: JSON.stringify({ name, email, password }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       }
     )
       .then((response) => {
@@ -41,13 +44,11 @@ const SignUp = () => {
         }
         throw new Error(JSON.stringify(response.body));
       })
-      .then((data) => {
-        setIsLoading(false);
-        console.log("data", data);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        console.log("error", e);
+      .then((data) => {})
+      .catch((error) => {
+        setErrorMsg(error.message)
+      }).finally(() => {
+        setIsLoading(false)
       });
   };
 
