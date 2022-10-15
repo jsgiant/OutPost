@@ -9,6 +9,7 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 
 import "./App.css";
+import PostFeed from "./components/PostFeed";
 
 function App() {
   const router = createBrowserRouter(
@@ -16,6 +17,7 @@ function App() {
       <Route path="/">
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
+        <Route path="home" element={<PostFeed />} />
       </Route>
     )
   );

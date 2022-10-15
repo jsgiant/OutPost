@@ -1,4 +1,5 @@
 import NavBar from "../NavBar";
+import PostCreateModal from "../PostCreateModal";
 import {
   FeedContainer,
   FeedSection,
@@ -21,6 +22,7 @@ const PostFeed = () => {
         </ProfileSection>
         <FeedSection></FeedSection>
       </FeedContainer>
+      <PostCreateModal/>
     </FeedWrapper>
   );
 };
