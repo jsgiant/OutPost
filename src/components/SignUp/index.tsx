@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "../common/Input";
 import NavBar from "../NavBar";
+
 import {
   ErrorMsg,
   SignUpBtn,
@@ -15,15 +16,39 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmitForm = (e: any) => {
+  const onSubmitForm = async (e: any) => {
     e.preventDefault();
     console.log({ name, email, password, confirmPassword });
     if (password !== confirmPassword) {
       setErrorMsg(`Password Doesn't match`);
-    } else {
-      setErrorMsg("");
+      return;
     }
+    setErrorMsg("");
+    setIsLoading(true);
+    const promise = await fetch(
+      "https://hackout.hafeezulkareem.repl.co/sign-up",
+      {
+        //TODO: Need to change the Endpoint
+        method: "POST",
+        body: JSON.stringify({ name, email, password }),
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(JSON.stringify(response.body));
+      })
+      .then((data) => {
+        setIsLoading(false);
+        console.log("data", data);
+      })
+      .catch((e) => {
+        setIsLoading(false);
+        console.log("error", e);
+      });
   };
 
   return (
@@ -62,7 +87,9 @@ const SignUp = () => {
           onChangeValue={setConfirmPassword}
           minLength={6}
         />
-        <SignUpBtn type="submit">Sign up</SignUpBtn>
+        <SignUpBtn type="submit" disabled={isLoading}>
+          Sign up
+        </SignUpBtn>
         {errorMsg && <ErrorMsg>{errorMsg}</ErrorMsg>}
       </SignUpForm>
     </SignUpContainer>

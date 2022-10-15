@@ -15,7 +15,7 @@ export const SignUpForm = styled.form`
 `;
 
 export const SignUpBtn = styled.button`
-  ${tw`bg-purple-500 hover:bg-purple-800 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer outline-none border-0`}
+  ${tw`bg-purple-500 hover:bg-purple-800 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer outline-none border-0 disabled:opacity-50 disabled:cursor-wait`}
 `;
 
 export const ErrorMsg = styled.p`

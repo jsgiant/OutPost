@@ -6,7 +6,7 @@ export const NavbarWrapper = styled.nav`
 `;
 
 export const NavbarContainer = styled.div`
-  ${tw`mx-16 flex justify-between items-center`}
+  ${tw`mx-12 flex justify-between items-center`}
 `;
 
 export const RightSection = styled.div`
