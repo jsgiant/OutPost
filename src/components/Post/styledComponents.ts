@@ -37,8 +37,8 @@ export const DetailsContainer = styled.div`
   ${tw`flex justify-between items-center mb-4`}
 `;
 
-export const RequestBtn = styled.button`
-  ${tw`bg-purple-500 hover:bg-purple-800 text-white font-bold py-2 px-4 border border-blue-700 rounded cursor-pointer outline-none border-0 disabled:opacity-50 disabled:cursor-wait`}
+export const ContactBtn = styled.a`
+  ${tw`bg-purple-500 hover:bg-purple-800 text-white font-medium py-2 px-4 border border-blue-700 rounded cursor-pointer outline-none border-0 no-underline`}
 `;
 
 export const TagContainer = styled.div`
