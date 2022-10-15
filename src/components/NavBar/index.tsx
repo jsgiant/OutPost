@@ -1,3 +1,9 @@
+import {useState} from "react"
+import { useNavigate } from "react-router-dom";
+
+import { SIGN_IN_PATH } from "../../constants/pathConstants";
+import { getToken } from "../../utils/storageUtils";
+
 import {
   CompanyName,
   LeftSection,
@@ -14,6 +20,31 @@ type Props = {
 };
 
 const NavBar = ({ isLoggedIn = true }: Props) => {
+  const navigate = useNavigate()
+
+  const [loading, setLoading] = useState(false)
+
+  const logout = async () => {
+    setLoading(true)
+    await fetch(
+      "https://hackout.hafeezulkareem.repl.co/sign-out",
+      {
+        method: "GET",
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${getToken()}`}
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          navigate(SIGN_IN_PATH)
+        }else {
+          throw new Error(data.message)
+        }
+      }).finally(() => {
+        setLoading(false)
+      })
+  }
+
   return (
     <NavbarWrapper>
       <NavbarContainer>
@@ -33,7 +64,7 @@ const NavBar = ({ isLoggedIn = true }: Props) => {
                 "https://ik.imagekit.io/axszharpl/OutPost/user_CK3SYbN_Z.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665818305793"
               }
             />
-            <LogoutBtn>Logout</LogoutBtn>
+            <LogoutBtn onClick={logout} disabled={loading}>Logout</LogoutBtn>
           </LeftSection>
         )}
       </NavbarContainer>
