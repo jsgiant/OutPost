@@ -69,7 +69,7 @@ const PostFeed = () => {
     if (!isSignedIn()) {
       return navigate(SIGN_IN_PATH)
     }
-    if (!user) {
+    if (Object.keys(user).length === 0) {
       getProfileDetails()
     }
     getPosts()

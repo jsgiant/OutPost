@@ -45,7 +45,7 @@ const Post = ({ postDetails }: Props) => {
     <PostContainer>
       <PostHeader>
         <VocationName>{name}</VocationName>
-        <UserName>with Anil Peddireddy</UserName>
+        <UserName>with {email.split('@')[0]}</UserName>
       </PostHeader>
       <Section>
         <SectionHeading>Duration</SectionHeading>
