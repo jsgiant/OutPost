@@ -59,7 +59,9 @@ const PostFeed = () => {
       .then((data) => {
         if (data.success) {
           const {travels} = data
-          setPosts(travels)
+          if (travels !== null) {
+            setPosts(travels)
+          }
         }else {
           throw new Error(data.message)
         }
