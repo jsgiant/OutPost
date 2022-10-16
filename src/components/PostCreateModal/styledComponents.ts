@@ -7,6 +7,18 @@ export const SubmitButton = styled.button`
     `}
 `
 
+export const CloseButtonContainer = styled.div`
+    ${tw`
+        flex justify-end
+    `}
+`
+
+export const CloseButton = styled.button`
+    ${tw`
+        border-0 outline-none font-bold p-0 bg-transparent cursor-pointer
+    `}
+`
+
 export const ErrorMessage = styled.p`
     ${tw`
         text-red-600

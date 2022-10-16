@@ -23,6 +23,7 @@ const PostFeed = () => {
   const navigate = useNavigate()
 
   const [posts, setPosts] = useState([])
+  const [showCreateModal, setShowCreateModal] = useState(false)
 
   //@ts-ignore
   const [user, dispatch] = useContext(UserContext)
@@ -75,9 +76,17 @@ const PostFeed = () => {
     getPosts()
   }, [])
 
+  const openCreateModal = () => {
+    setShowCreateModal(true)
+  }
+
+  const closeCreateModal = () => {
+    setShowCreateModal(false)
+  }
+
   return (
     <FeedWrapper>
-      <NavBar />
+      <NavBar openCreateModal={openCreateModal} />
       <FeedContainer>
         <ProfileSection>
           <ProfilePic src="https://ik.imagekit.io/axszharpl/OutPost/user_CK3SYbN_Z.png?ik-sdk-version=javascript-1.4.3&updatedAt=1665818305793" />
@@ -90,7 +99,7 @@ const PostFeed = () => {
           </PostList>
         </FeedSection>
       </FeedContainer>
-      <PostCreateModal />
+      <PostCreateModal open={showCreateModal} getPosts={getPosts} closeModal={closeCreateModal} />
     </FeedWrapper>
   );
 };

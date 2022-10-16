@@ -29,6 +29,10 @@ export const ProfilePic = styled.img`
   ${tw`rounded-full h-16 `}
 `;
 
+export const CreateBtn = styled.button`
+  ${tw`border-0 outline-none text-white font-bold p-2 bg-transparent cursor-pointer`}
+`;
+
 export const LogoutBtn = styled.button`
   ${tw`border-0 outline-none text-white font-bold p-2 bg-transparent cursor-pointer`}
 `;

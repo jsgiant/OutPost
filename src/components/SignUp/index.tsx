@@ -64,7 +64,7 @@ const SignUp = () => {
 
   return (
     <SignUpContainer>
-      <NavBar isLoggedIn={false} />
+      <NavBar />
       <SignUpForm onSubmit={onSubmitForm}>
         <SignUpHeading>Sign Up</SignUpHeading>
         <Input
